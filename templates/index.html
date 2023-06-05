@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>ToDo</title>
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
+    <div class="container">
+        <h1>ToDo App</h1>
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="Enter a task...">
+            <button type="submit">Add Task</button>
+        </form>
+        <ul id="task-list">
+            <!-- Tasks will be dynamically added here -->
+        </ul>
+    </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
