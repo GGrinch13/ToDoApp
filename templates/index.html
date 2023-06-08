@@ -7,15 +7,23 @@
 <body>
     <div class="container">
         <h1>ToDo App</h1>
-        <form id="task-form">
-            <input type="text" id="task-input" placeholder="Enter a task...">
-            <button type="submit">Add Task</button>
+        <form id="task-form" method="POST" action="/submit">
+            <input type="text" name="task-input" placeholder="Enter a task...">
+            <input type="submit" value="შენახვა">
         </form>
-        <ul id="task-list">
-            <!-- Tasks will be dynamically added here -->
+        <h1>Tasks</h1>
+        <ul>
+            {% for task in tasks %}
+            <li>
+                {{ task[1]}}
+                <form class="delete-form" action="/delete/{{ task[0] }}" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+
+            </li>
+            {% endfor %}
+
         </ul>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
