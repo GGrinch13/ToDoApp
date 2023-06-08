@@ -1,5 +1,5 @@
     Authors:
-Giorgi Minashvili, Ani Kakachia, Aleksandre Kostava, Elene Gabidaidze, Goga Kavtelishvili.
+Giorgi Minashvili, Ani Kakachia,Elene Gabidaidze.
 
 Group Number: 10
 
