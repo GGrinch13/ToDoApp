@@ -8,18 +8,29 @@
     <div class="container">
         <h1>ToDo App</h1>
         <form id="task-form" method="POST" action="/submit">
-            <input type="text" name="task-input" placeholder="Enter a task...">
-            <input type="submit" value="შენახვა">
+            <input type="text" id="task-input" name="task-input" placeholder="Enter a task..." required maxlength="36">
+            
+            <button class="cta" >
+                <span>SAVE</span>
+                <svg viewBox="0 0 13 10" height="10px" width="15px">
+                  <path d="M1,5 L11,5"></path>
+                  <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+              </button>
         </form>
         <h1>Tasks</h1>
         <ul>
             {% for task in tasks %}
             <li>
-                {{ task[1]}}
+                {{task[1]}}
                 <form class="delete-form" action="/delete/{{ task[0] }}" method="POST">
-                <button type="submit">Delete</button>
-            </form>
+                <button type="submit" class="button-delete">Delete</button>
+                </form>
+                <form class="complete-form" action="/complete/{{ task[0] }}" method="POST">
+                <button type="submit" class="button-complete">Complete</button>
+                </form>
 
+                  
             </li>
             {% endfor %}
 

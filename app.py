@@ -28,6 +28,8 @@ def submit():
     conn = sqlite3.connect('tasks.db')
     c = conn.cursor()
     task = request.form.get('task-input')
+    if not task.strip():
+        return 'Fill in the task field!', 400
     c.execute("INSERT INTO tasks (task) VALUES (?)", (task,))
     conn.commit()
     c.execute("SELECT * FROM tasks ORDER BY id ASC")

@@ -16,6 +16,7 @@ body {
 h1 {
     color: #333;
     text-align: center;
+    font-size: clamp(20px,8vw,55px);
 }
 
 form {
@@ -33,12 +34,15 @@ form {
 
 button {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 12px;
     border: none;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 4px;
+    color: #000000;
+    border-radius: 45px;
+    transition: all 0.3s ease 0s;
     cursor: pointer;
+    background-color: #12acffdf;
+    text-transform: uppercase;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 ul {
@@ -69,3 +73,106 @@ li.completed {
     text-decoration: line-through;
     opacity: 0.5;
 }
+
+  -----------------------
+  .button-delete {
+    background-color: #ccc;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #b2ffc4;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .button-delete:hover {
+    background-color: #ff0000;
+    box-shadow: 0px 15px 20px rgba(179, 22, 22, 0.4);
+    color: #ffffff;
+    transform: translateY(-2.3px);
+  }
+  
+  .button-delete:active {
+    transform: translateY(-1px);
+  }
+  .button-complete {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #b2ffc4;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .button-complete:hover {
+    background-color: #00ff0d;
+    box-shadow: 0px 15px 20px rgba(22, 179, 51, 0.4);
+    color: #ffffff;
+    transform: translateY(-2.3px);
+  }
+  
+  .button-complete:active {
+    transform: translateY(-1px);
+  }
+
+.completed-task{
+    text-decoration: line-through;
+}
+
+-------------------------------------
+.cta {
+  position: relative;
+  margin: auto;
+  padding: 12px 18px;
+  transition: all 0.2s ease;
+  border: none;
+  background-color: #000000;
+ }
+
+ /* .cta span {
+  position: relative;
+  font-size: 18px;
+  
+  letter-spacing: 0.05em;
+  color: #234567;
+ } */
+ 
+ .cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #234567;
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+ }
+ 
+ .cta:hover svg {
+  transform: translateX(0);
+  rotate: 90deg;
+ }
+ .cta:hover {
+  
+  color: #ffffff;
+  background-color: #0091ff;
+  box-shadow: 0px 15px 20px rgba(22, 121, 179, 0.4);
+  color: #ffffff;
+  transform: translateY(-2.3px);
+ }
+ 
+ .cta:active {
+  transform: scale(0.95);
+ }
