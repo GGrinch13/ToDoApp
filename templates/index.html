@@ -8,7 +8,7 @@
     <div class="container">
         <h1>ToDo App</h1>
         <form id="task-form" method="POST" action="/submit">
-            <input type="text" id="task-input" name="task-input" placeholder="Enter a task..." required maxlength="36">
+            <input type="text" id="task-input" name="task-input" placeholder="Enter a task..." required maxlength="40">
             
             <button class="cta" >
                 <span>SAVE</span>
@@ -22,18 +22,23 @@
         <ul>
             {% for task in tasks %}
             <li>
-                {{task[1]}}
-                <form class="delete-form" action="/delete/{{ task[0] }}" method="POST">
-                <button type="submit" class="button-delete">Delete</button>
-                </form>
+                {% if task[2] == 1 %}
+                <span class="completed-task">{{ task[1] }}</span>
+                {% else %}
+                <span>{{ task[1] }}</span>
+                {% endif %}
+                {% if task[2] == 0 %}
                 <form class="complete-form" action="/complete/{{ task[0] }}" method="POST">
-                <button type="submit" class="button-complete">Complete</button>
+                <button type="submit" class="button-complete" >Complete</button>
                 </form>
+                {% endif %}
+                <form class="delete-form" action="/delete/{{ task[0] }}" method="POST">
+                    <button type="submit" class="button-delete" >Delete</button>
+                    </form>
 
                   
             </li>
             {% endfor %}
-
         </ul>
     </div>
 </body>

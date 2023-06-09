@@ -6,7 +6,7 @@ app = Flask(__name__)
 conn = sqlite3.connect('tasks.db')
 c = conn.cursor()
 c.execute('''CREATE TABLE IF NOT EXISTS tasks
-             (id INTEGER PRIMARY KEY AUTOINCREMENT, task TEXT)''')
+             (id INTEGER PRIMARY KEY AUTOINCREMENT, task TEXT, completed INTEGER DEFAULT 0)''')
 conn.commit()
 conn.close()
 @app.route('/')
@@ -34,7 +34,6 @@ def submit():
     conn.commit()
     c.execute("SELECT * FROM tasks ORDER BY id ASC")
     tasks = c.fetchall()
-    print(tasks)
     return render_template('index.html', tasks=tasks)
 
 #
@@ -49,6 +48,17 @@ def delete(task_id):
     conn.close()
     return render_template('index.html', tasks=tasks)
 
+@app.route('/complete/<int:task_id>', methods=['POST'])
+def complete(task_id):
+    conn = sqlite3.connect('tasks.db')
+    c = conn.cursor()
+    c.execute("UPDATE tasks SET completed = 1 WHERE id = ?", (task_id,))
+    c.execute("SELECT * FROM tasks ORDER BY id ASC")
+    conn.commit()
+    tasks = c.fetchall()
 
+    conn.close()
+
+    return render_template('index.html', tasks=tasks)
 with app.app_context():
     app.run()

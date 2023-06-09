@@ -70,8 +70,9 @@ li button {
 }
 
 li.completed {
+    color: #999;
     text-decoration: line-through;
-    opacity: 0.5;
+    
 }
 
   -----------------------
@@ -139,13 +140,6 @@ li.completed {
   background-color: #000000;
  }
 
- /* .cta span {
-  position: relative;
-  font-size: 18px;
-  
-  letter-spacing: 0.05em;
-  color: #234567;
- } */
  
  .cta svg {
   position: relative;
