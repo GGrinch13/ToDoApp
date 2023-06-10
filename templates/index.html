@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
+    <a href="about.html"><button>About</button></a>
     <div class="container">
         <h1>ToDo App</h1>
         <form id="task-form" method="POST" action="/submit">
@@ -41,5 +42,6 @@
             {% endfor %}
         </ul>
     </div>
+    
 </body>
 </html>

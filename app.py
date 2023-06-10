@@ -9,7 +9,9 @@ c.execute('''CREATE TABLE IF NOT EXISTS tasks
              (id INTEGER PRIMARY KEY AUTOINCREMENT, task TEXT, completed INTEGER DEFAULT 0)''')
 conn.commit()
 conn.close()
+
 @app.route('/')
+@app.route('/index.html')
 def index_page():
     conn = sqlite3.connect('tasks.db')
     c = conn.cursor()
@@ -19,6 +21,7 @@ def index_page():
 
 
 @app.route('/about')
+@app.route('/about.html')
 def about_page():
     return render_template('about.html')
 
@@ -60,5 +63,7 @@ def complete(task_id):
     conn.close()
 
     return render_template('index.html', tasks=tasks)
-# with app.app_context():
-#     app.run()
+
+#Uncomment this if developing
+with app.app_context():
+    app.run()
