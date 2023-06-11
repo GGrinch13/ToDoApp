@@ -11,6 +11,8 @@ conn.commit()
 conn.close()
 
 @app.route('/')
+@app.route('/complete/index.html')
+@app.route('/delete/index.html')
 @app.route('/index.html')
 def index_page():
     conn = sqlite3.connect('tasks.db')
@@ -21,6 +23,8 @@ def index_page():
 
 
 @app.route('/about')
+@app.route('/complete/about.html')
+@app.route('/delete/about.html')
 @app.route('/about.html')
 def about_page():
     return render_template('about.html')

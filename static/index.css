@@ -171,3 +171,31 @@ li.completed {
  .cta:active {
   transform: scale(0.95);
  }
+
+ -------------------------
+ .ctaa {
+  position: relative;
+  margin: auto;
+  border: none;
+  padding: 12px 18px;
+  transition: all 0.2s ease;
+  border-radius: 45px;
+  margin-left: 10px;
+  background-color: rgba(204, 255, 0, 0.842);
+ }
+
+
+.ctaa:hover svg {
+  transform: translateX(0);
+  rotate: 90deg;
+ }
+ .ctaa:hover {
+  color: #ffffff;
+  background-color: rgb(204, 255, 0);
+  box-shadow: 0px 15px 20px rgba(204, 255, 0, 0.644);
+  transform: translateY(-2.3px);
+ }
+ 
+ .ctaa:active {
+  transform: scale(0.95);
+ }

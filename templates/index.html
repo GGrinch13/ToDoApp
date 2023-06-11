@@ -3,9 +3,10 @@
 <head>
     <title>ToDo App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <link rel="icon" href="/static/images/tsk.png">
 </head>
 <body>
-    <a href="about.html"><button>About</button></a>
+    <a href="about.html"><button class="ctaa" style="background-color: rgba(204, 255, 0, 0.842)">About</button></a>
     <div class="container">
         <h1>ToDo App</h1>
         <form id="task-form" method="POST" action="/submit">
