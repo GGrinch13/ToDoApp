@@ -69,5 +69,5 @@ def complete(task_id):
     return render_template('index.html', tasks=tasks)
 
 #Uncomment this if developing
-with app.app_context():
-    app.run()
+# with app.app_context():
+#     app.run()
