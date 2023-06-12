@@ -25,18 +25,20 @@
             {% for task in tasks %}
             <li>
                 {% if task[2] == 1 %}
-                <span class="completed-task">{{ task[1] }}</span>
+                <a class="a1" href="index.html"><span class="completed-task">{{ task[1] }}</span></a>
                 {% else %}
-                <span>{{ task[1] }}</span>
+                
+                <a class="a1" href="index.html"><span>{{ task[1] }}</span></a>
                 {% endif %}
                 {% if task[2] == 0 %}
+                <div style="display: flex;">
                 <form class="complete-form" action="/complete/{{ task[0] }}" method="POST">
-                <button type="submit" class="button-complete" >Complete</button>
+                <button type="submit" class="button-complete">Complete</button>
                 </form>
                 {% endif %}
                 <form class="delete-form" action="/delete/{{ task[0] }}" method="POST">
-                    <button type="submit" class="button-delete" >Delete</button>
-                    </form>
+                <button type="submit" class="button-delete">Delete</button>
+                </form></div>
 
                   
             </li>
