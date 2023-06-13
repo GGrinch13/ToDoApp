@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>ToDo App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
     <link rel="icon" href="/static/images/tsk.png">
+    <script>
+        function showTaskDetails(taskId) {
+            // Perform any necessary actions when a task is clicked
+            alert("Clicked task ID: " + taskId);
+            
+            // Redirect to a new page with the task details
+            window.location.href = "/task-details/" + taskId;
+        }
+    </script>
 </head>
 <body>
     <a href="about.html"><button class="ctaa" style="background-color: rgba(204, 255, 0, 0.842)">About</button></a>
@@ -25,10 +35,10 @@
             {% for task in tasks %}
             <li>
                 {% if task[2] == 1 %}
-                <a class="a1" href="index.html"><span class="completed-task">{{ task[1] }}</span></a>
+                <a class="a1" href="task.html"><span class="completed-task">{{ task[1] }}</span></a>
                 {% else %}
                 
-                <a class="a1" href="index.html"><span>{{ task[1] }}</span></a>
+                <a class="a1" href="task.html" onclick="showTaskDetails(1)"><span>{{ task[1] }}</span></a>
                 {% endif %}
                 {% if task[2] == 0 %}
                 <div style="display: flex;">

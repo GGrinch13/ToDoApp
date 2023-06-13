@@ -19,7 +19,7 @@ def index_page():
     c = conn.cursor()
     c.execute("SELECT * FROM tasks ORDER BY id ASC")
     tasks = c.fetchall()
-    return render_template('index.html', tasks=tasks)
+    return render_template('index.html', tasks=tasks), 200
 
 
 @app.route('/about')
@@ -41,7 +41,7 @@ def submit():
     conn.commit()
     c.execute("SELECT * FROM tasks ORDER BY id ASC")
     tasks = c.fetchall()
-    return render_template('index.html', tasks=tasks)
+    return render_template('index.html', tasks=tasks), 200
 
 #
 @app.route('/delete/<int:task_id>', methods=['POST'])
@@ -53,7 +53,7 @@ def delete(task_id):
     tasks = c.fetchall()
     conn.commit()
     conn.close()
-    return render_template('index.html', tasks=tasks)
+    return render_template('index.html', tasks=tasks), 200
 
 @app.route('/complete/<int:task_id>', methods=['POST'])
 def complete(task_id):
@@ -66,8 +66,14 @@ def complete(task_id):
 
     conn.close()
 
-    return render_template('index.html', tasks=tasks)
+    return render_template('index.html', tasks=tasks), 200
+
+@app.route('/task.html')
+@app.route('/delete/task.html')
+@app.route('/complete/task.html')
+def task_page():
+    return render_template('task.html')
 
 #Uncomment this if developing
-with app.app_context():
-    app.run()
+# with app.app_context():
+#     app.run()
