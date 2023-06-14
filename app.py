@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 import sqlite3
-app = Flask(name)
+app = Flask(__name__)
 
 
 conn = sqlite3.connect('tasks.db')
