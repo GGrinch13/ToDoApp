@@ -34,7 +34,7 @@ h1 {
     border-radius: 45px;
     background-color: rgba(204, 255, 0, 0.842);
    }
-  
+
 
 .ctaa:hover svg {
     transform: translateX(0);
@@ -46,7 +46,64 @@ h1 {
     box-shadow: 0px 15px 20px rgba(204, 255, 0, 0.644);
     transform: translateY(-2.3px);
    }
-   
+
    .ctaa:active {
+    transform: scale(0.95);
+   }
+
+
+
+.text1{
+    display: flex;
+    margin: auto;
+    width: 85%;
+    height: 270px;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #fab3ff;
+    resize: none;
+    font-size: 25px;
+
+
+}
+.text1:focus{
+    outline: none;
+
+}
+
+::-webkit-scrollbar{
+    width: 13px;
+}
+::-webkit-scrollbar-thumb{
+    background: #570575;
+    border-radius: 5px;
+
+}
+
+
+.ctaa1 {
+    display: flex;
+    position: center;
+    margin: auto;
+    text-transform: uppercase;
+    border: none;
+    font-size: 25px;
+    padding: 12px 20px;
+    color: black;
+    transition: all 0.2s ease;
+    border-radius: 45px;
+    background-color: rgba(204, 255, 0, 0.842);
+   }
+   .ctaa1:hover {
+    color: #ffffff;
+    background-color: rgb(204, 255, 0);
+    box-shadow: 0px 15px 20px rgba(204, 255, 0, 0.644);
+    transform: translateY(-2.3px);
+   }
+
+   .ctaa1:active {
     transform: scale(0.95);
    }
