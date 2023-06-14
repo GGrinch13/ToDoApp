@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 import sqlite3
-app = Flask(__name__)
+app = Flask(name)
 
 
 conn = sqlite3.connect('tasks.db')
@@ -19,6 +19,7 @@ def index_page():
     c = conn.cursor()
     c.execute("SELECT * FROM tasks ORDER BY id ASC")
     tasks = c.fetchall()
+
     return render_template('index.html', tasks=tasks), 200
 
 
@@ -42,8 +43,6 @@ def submit():
     c.execute("SELECT * FROM tasks ORDER BY id ASC")
     tasks = c.fetchall()
     return render_template('index.html', tasks=tasks), 200
-
-#
 @app.route('/delete/<int:task_id>', methods=['POST'])
 def delete(task_id):
     conn = sqlite3.connect('tasks.db')
@@ -61,19 +60,25 @@ def complete(task_id):
     c = conn.cursor()
     c.execute("UPDATE tasks SET completed = 1 WHERE id = ?", (task_id,))
     c.execute("SELECT * FROM tasks ORDER BY id ASC")
-    conn.commit()
     tasks = c.fetchall()
-
+    print(task_id)
+    conn.commit()
     conn.close()
-
     return render_template('index.html', tasks=tasks), 200
 
 @app.route('/task.html')
 @app.route('/delete/task.html')
 @app.route('/complete/task.html')
 def task_page():
-    return render_template('task.html')
+    conn = sqlite3.connect('tasks.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM tasks ORDER BY id ASC")
+    conn.commit()
+    tasks = c.fetchall()
+    return render_template('task.html' )
 
 #Uncomment this if developing
-# with app.app_context():
-#     app.run()
+#with app.app_context():
+#    app.run()
+
+#გასაკეთებელია OPEN ღილაკი!!!
