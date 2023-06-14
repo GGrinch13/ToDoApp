@@ -9,7 +9,7 @@
         function showTaskDetails(taskId) {
             // Perform any necessary actions when a task is clicked
             alert("Clicked task ID: " + taskId);
-            
+
             // Redirect to a new page with the task details
             window.location.href = "/task-details/" + taskId;
         }
@@ -21,7 +21,7 @@
         <h1>ToDo App</h1>
         <form id="task-form" method="POST" action="/submit">
             <input type="text" id="task-input" name="task-input" placeholder="Enter a task..." required maxlength="40">
-            
+
             <button class="cta" >
                 <span>SAVE</span>
                 <svg viewBox="0 0 13 10" height="10px" width="15px">
@@ -31,30 +31,37 @@
               </button>
         </form>
         <h1>Tasks</h1>
-        <ul>
+<ul>
             {% for task in tasks %}
             <li>
+                <!-- Tasks -->
                 {% if task[2] == 1 %}
-                <a class="a1" href="task.html"><span class="completed-task">{{ task[1] }}</span></a>
+                <span class="completed-task">{{ task[1] }}</span>
                 {% else %}
-                
-                <a class="a1" href="task.html" onclick="showTaskDetails(1)"><span>{{ task[1] }}</span></a>
+
+                <span>{{ task[1] }}</span>
                 {% endif %}
                 {% if task[2] == 0 %}
+                <!-- Buttons -->
                 <div style="display: flex;">
+
                 <form class="complete-form" action="/complete/{{ task[0] }}" method="POST">
-                <button type="submit" class="button-complete">Complete</button>
+                    <button type="submit" class="button-complete">Complete</button>
                 </form>
                 {% endif %}
                 <form class="delete-form" action="/delete/{{ task[0] }}" method="POST">
-                <button type="submit" class="button-delete">Delete</button>
-                </form></div>
+                    <button type="submit" class="button-delete">Delete</button>
+                </form>
+                <a href="task.html"><button type="submit">Open</button></a>
 
-                  
+
+        </div>
+
+
             </li>
             {% endfor %}
         </ul>
     </div>
-    
+
 </body>
 </html>
