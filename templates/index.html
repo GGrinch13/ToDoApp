@@ -7,54 +7,88 @@
     <link rel="icon" href="/static/images/tsk.png">
     <script>
         function showTaskDetails(taskId) {
-            // Perform any necessary actions when a task is clicked
+            // Function to show task details
             alert("Clicked task ID: " + taskId);
-            
+
             // Redirect to a new page with the task details
             window.location.href = "/task-details/" + taskId;
+        }
+
+        function taskClicked(taskId) {
+            // Function to handle task click event
+            alert("Clicked task ID: " + taskId);
+
+            // Redirect to a new page with the task details
+            window.location.href = "/task-details/" + taskId;
+        }
+
+        function searchTasks() {
+            // Function to search tasks based on input value
+            var input, filter, ul, li, span, i, txtValue;
+            input = document.getElementById("search-input");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("task-list");
+            li = ul.getElementsByTagName("li");
+
+            // Loop through all tasks and hide/show them based on the filter
+            for (i = 0; i < li.length; i++) {
+                span = li[i].getElementsByTagName("span")[0];
+                txtValue = span.textContent || span.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
         }
     </script>
 </head>
 <body>
-    <a href="about.html"><button class="ctaa" style="background-color: rgba(204, 255, 0, 0.842)">About</button></a>
-    <div class="container">
-        <h1>ToDo App</h1>
-        <form id="task-form" method="POST" action="/submit">
-            <input type="text" id="task-input" name="task-input" placeholder="Enter a task..." required maxlength="40">
-            
-            <button class="cta" >
-                <span>SAVE</span>
-                <svg viewBox="0 0 13 10" height="10px" width="15px">
-                  <path d="M1,5 L11,5"></path>
-                  <polyline points="8 1 12 5 8 9"></polyline>
-                </svg>
-              </button>
-        </form>
-        <h1>Tasks</h1>
-        <ul>
-            {% for task in tasks %}
-            <li>
-                {% if task[2] == 1 %}
-                <a class="a1" href="task.html"><span class="completed-task">{{ task[1] }}</span></a>
-                {% else %}
-                
-                <a class="a1" href="task.html" onclick="showTaskDetails(1)"><span>{{ task[1] }}</span></a>
-                {% endif %}
-                {% if task[2] == 0 %}
-                <div style="display: flex;">
-                <form class="complete-form" action="/complete/{{ task[0] }}" method="POST">
-                <button type="submit" class="button-complete">Complete</button>
-                </form>
-                {% endif %}
-                <form class="delete-form" action="/delete/{{ task[0] }}" method="POST">
-                <button type="submit" class="button-delete">Delete</button>
-                </form></div>
-
-                  
-            </li>
-            {% endfor %}
-        </ul>
+    <a href="about.html"><button class="ctaa">About</button></a>
+    <div class="background" style="margin: auto; margin-top: 7%;">
+        <div class="container">
+            <h1>ToDo App</h1>
+            <form id="task-form" method="POST" action="/submit">
+                <input type="text" style="border-radius: 34px;" id="task-input" name="task-input" placeholder="Enter a task..." required maxlength="40">
+                <button class="cta">
+                    <span>SAVE</span>
+                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                      <path d="M1,5 L11,5"></path>
+                      <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                </button>
+            </form>
+            <h1>Tasks</h1>
+            <input type="text" id="search-input"  onkeyup="searchTasks()" placeholder="Search tasks...">
+            <ul id="task-list">
+                {% for task in tasks %}
+                <li>
+                    <div class="task-container" onclick="taskClicked({{ task[0] }})">
+                        <!-- Tasks -->
+                        {% if task[2] == 1 %}
+                            <span class="completed-task">{{ task[1] }}</span>
+                        {% else %}
+                            <span>{{ task[1] }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="button-container">
+                        {% if task[2] == 0 %}
+                            <!-- Buttons -->
+                            <form class="complete-form" action="/complete/{{ task[0] }}" method="POST">
+                                <button type="submit" class="button-complete">Complete</button>
+                            </form>
+                        {% endif %}
+                        <form class="delete-form" action="/delete/{{ task[0] }}" method="POST">
+                            <button type="submit" class="button-delete" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+                        <form action="/task/{{ task[0] }}">
+                            <button type="submit" class="ctaa">Open</button>
+                        </form>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
-    
 </body>
 </html>

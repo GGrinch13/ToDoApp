@@ -2,17 +2,29 @@
 <html>
 <head>
     <link rel="stylesheet" href="/static/task.css">
+    <link rel="icon" href="/static/images/desc.png">
     <title>Task Details</title>
 </head>
 <body>
     <a href="/"><button class="ctaa">Back</button></a>
-    <h1>Task Details</h1>
+    <h1>{{ task }}</h1>
+    
     <div class="task-details">
-        <h2 style="display: flex; justify-content: center; ">Description</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam amet vel enim assumenda laborum corporis iste. Recusandae ea eaque consequuntur at molestias odio dolorum mollitia esse exercitationem. Similique praesentium incidunt ratione nobis, rerum sint impedit in tenetur quibusdam maxime tempore a error consequatur pariatur atque, alias dolorem illo dicta? Non.</p>
-        
+        <h2 style="display: flex; justify-content: center;">Description</h2>
+        <form action="/save/{{ task_id }}" method="POST">
+            
+            <textarea wrap="hard" name="descc" style="scrollbar-face-color: blueviolet;"  class="text1" id="description" placeholder="Type in your description..." cols="30" rows="10">{{ description }}</textarea>
+            <button class="ctaa1" type="submit">Complete</button>
+        </form>
     </div>
     
-    
+    <script>
+        function getTextareaInput() {
+            var textareaInput = document.getElementsByName("descc").value;
+            
+            console.log("Textarea input: " + textareaInput);
+           
+        }
+    </script>
 </body>
 </html>
