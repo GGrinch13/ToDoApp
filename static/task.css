@@ -32,7 +32,7 @@ h1 {
     color: black;
     transition: all 0.2s ease;
     border-radius: 45px;
-    background-color: rgba(204, 255, 0, 0.842);
+    background-color: #ffe79b;
    }
 
 
@@ -42,7 +42,7 @@ h1 {
    }
    .ctaa:hover {
     color: #ffffff;
-    background-color: rgb(204, 255, 0);
+    background-color: #ffce32;
     box-shadow: 0px 15px 20px rgba(204, 255, 0, 0.644);
     transform: translateY(-2.3px);
    }

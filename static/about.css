@@ -1,74 +1,73 @@
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .ctaa {
-    position: relative;
-    margin: auto;
-    text-transform: uppercase;
-    border: none;
-    font-size: 12px;
-    padding: 12px 20px;
-    color: black;
-    transition: all 0.2s ease;
-    border-radius: 45px;
-    margin-left: 20px;
-    margin-top: 10px;
-    background-color: rgba(204, 255, 0, 0.842);
-   }
-  
+  position: relative;
+  margin: auto;
+  text-transform: uppercase;
+  border: none;
+  font-size: 12px;
+  padding: 12px 20px;
+  color: black;
+  transition: all 0.2s ease;
+  border-radius: 45px;
+  margin-left: 20px;
+  margin-top: 10px;
+  background-color: #ffe79b;
+ }
+
 
 .ctaa:hover svg {
-    transform: translateX(0);
-    rotate: 90deg;
-   }
-   .ctaa:hover {
-    color: #ffffff;
-    background-color: rgb(204, 255, 0);
-    box-shadow: 0px 15px 20px rgba(204, 255, 0, 0.644);
-    transform: translateY(-2.3px);
-   }
-   
-   .ctaa:active {
-    transform: scale(0.95);
-   }
+  transform: translateX(0);
+  rotate: 90deg;
+ }
+ .ctaa:hover {
+  color: #ffffff;
+  background-color: #ffce32;
+  box-shadow: 0px 15px 20px rgb(160, 200, 0);
+  transform: translateY(-2.3px);
+ }
+ 
+ .ctaa:active {
+  transform: scale(0.95);
+ }
 
 body {
 
-    background-image: url(images/background3.jpg);
-    font-family: Arial, sans-serif;
-  }
-  
-  .container {
-    display: grid;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f070ffcf;
-    border-radius: 45px;
-    box-shadow: 0 35px 9px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    color: #000000;
-    text-align: center;
-  }
-  .centered-div {
-    place-self: center;
-  }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    box-shadow: 0px 13px 7px rgba(0, 0, 0, 0.1)
-  }
-  
+  background-image: url(images/background3.jpg);
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: grid;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f070ffcf;
+  border-radius: 45px;
+  box-shadow: 0 35px 9px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #000000;
+  text-align: center;
+}
+.centered-div {
+  place-self: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  box-shadow: 0px 13px 7px rgba(0, 0, 0, 0.1)
+}

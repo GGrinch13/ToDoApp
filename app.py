@@ -6,7 +6,7 @@ app = Flask(__name__)
 conn = sqlite3.connect('tasks.db')
 c = conn.cursor()
 c.execute('''CREATE TABLE IF NOT EXISTS tasks
-             (id INTEGER PRIMARY KEY AUTOINCREMENT, task TEXT, completed INTEGER DEFAULT 0)''')
+             (id INTEGER PRIMARY KEY AUTOINCREMENT, task TEXT, completed INTEGER DEFAULT 0, description TEXT DEFAULT "")''')
 conn.commit()
 conn.close()
 
@@ -19,6 +19,7 @@ def index_page():
     c = conn.cursor()
     c.execute("SELECT * FROM tasks ORDER BY id ASC")
     tasks = c.fetchall()
+    conn.close()
 
     return render_template('index.html', tasks=tasks), 200
 
@@ -42,6 +43,7 @@ def submit():
     conn.commit()
     c.execute("SELECT * FROM tasks ORDER BY id ASC")
     tasks = c.fetchall()
+    conn.close()
     return render_template('index.html', tasks=tasks), 200
 @app.route('/delete/<int:task_id>', methods=['POST'])
 def delete(task_id):
@@ -52,7 +54,8 @@ def delete(task_id):
     tasks = c.fetchall()
     conn.commit()
     conn.close()
-    return render_template('index.html', tasks=tasks), 200
+    alert_message = f'Task  has been deleted!'
+    return render_template('index.html', tasks=tasks, alert_message=alert_message), 200
 
 @app.route('/complete/<int:task_id>', methods=['POST'])
 def complete(task_id):
@@ -67,18 +70,30 @@ def complete(task_id):
     return render_template('index.html', tasks=tasks), 200
 
 @app.route('/task.html')
+@app.route('/task/<int:task_id>')
 @app.route('/delete/task.html')
 @app.route('/complete/task.html')
-def task_page():
+@app.route('/save/<int:task_id>', methods=['POST'])
+def task_page(task_id):
+
     conn = sqlite3.connect('tasks.db')
     c = conn.cursor()
     c.execute("SELECT * FROM tasks ORDER BY id ASC")
-    conn.commit()
     tasks = c.fetchall()
-    return render_template('task.html' )
+    if request.method == 'POST':
+        description = request.form.get('descc')
+        c.execute("UPDATE tasks SET description = ? WHERE id = ?", (description, task_id))
+
+    c.execute("SELECT description, task FROM tasks WHERE id = ?", (task_id,))
+    # c.execute("SELECT task FROM tasks WHERE id = ?", (task_id,))
+    row = c.fetchone()
+    description = row[0]
+    task = row[1]
+    conn.commit()
+    print(task)
+    conn.close()
+    return render_template('task.html', task=task, tasks=tasks, task_id=task_id, description=description), 200
 
 #Uncomment this if developing
 #with app.app_context():
-#    app.run()
-
-#გასაკეთებელია OPEN ღილაკი!!!
+#   app.run()
